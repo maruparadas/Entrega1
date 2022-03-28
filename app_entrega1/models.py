@@ -23,3 +23,4 @@ class Editorial(models.Model):
     web = models.CharField(max_length=40)
     pais_origen = models.CharField(max_length=40)
 
+

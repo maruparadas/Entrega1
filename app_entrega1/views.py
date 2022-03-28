@@ -22,6 +22,7 @@ def formulario_autores(request):
 
         autor = Autores(request.POST['nombre'],request.POST['apellido'])
         autor.save()
+        
         return render(request,"app_entrega1/autoresFormulario.html") 
 
     return render(request,"app_entrega1/autoresFormulario.html")    
