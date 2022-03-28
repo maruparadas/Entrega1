@@ -14,8 +14,14 @@ def fecha(request):
     return render(request,"app_entrega1/posts.html", dict_context)
 
 def autores(request):
-    autores = Autores.objects.filter(apellido="King")
     return render(request,"app_entrega1/autores.html")
 
 def formulario_autores(request):
+    
+    if request.method == 'POST':
+
+        autor = Autores(request.POST['nombre'],request.POST['apellido'])
+        autor.save()
+        return render(request,"app_entrega1/autoresFormulario.html") 
+
     return render(request,"app_entrega1/autoresFormulario.html")    
