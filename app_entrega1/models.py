@@ -12,15 +12,13 @@ class Libros(models.Model):
 
 class Autores(models.Model):
     
-    id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
+    id = models.AutoField(primary_key=True)
 
 class Editorial(models.Model):
     
-    id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     web = models.CharField(max_length=40)
     pais_origen = models.CharField(max_length=40)
-
-
+    id = models.AutoField(primary_key=True)
