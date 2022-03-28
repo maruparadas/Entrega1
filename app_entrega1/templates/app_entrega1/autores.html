@@ -1,24 +1,21 @@
-{% extends "app_entrega1/padre.html" %}
+{% extends "app_entrega1/base.html" %} 
 
-{% load static %}
-
-{% block contenidoQueCambia %}
-    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-    {% if miFormulario.errors %}
-
-    <p style="color: red;"> Están mal los datos, revisar</p>
-
-    {% endif %}
-    <form action="" method="POST">{% csrf_token %}
-
-        <!-- Acá está la magia de Django-->
-        
-        <table>
-            {{ miFormulario.as_table }}
-        </table>
-
-        <input type="submit", value="Enviar">
-
-    </form>
-
-{% endblock %}
+{% block autores %} 
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Autores</title>
+    </head>
+    <style>
+        body {
+            background-color: brown;
+        }
+    </style>
+        <body>
+            {<h1>Vista de autores</h1>
+            <p>Bienvenidos</p>}
+        </body>
+    </html>
+{% endblock autores %} 

@@ -1,31 +1,28 @@
 from django.http.request import QueryDict
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponse
+from datetime import datetime
 from app_entrega1.models import Autores
-from app_entrega1.forms import AutorFormulario
+#from app_entrega1.forms import AutorFormulario
 
 # Create your views here.
 
-def autor(request):
 
-      if request.method == 'POST':
+def fecha(request):
+    today = datetime.now()
+    dict_context = {"today":today}
+    return render(request,"app_entrega1/posts.html", dict_context)
 
-            miFormulario = AutorFormulario(request.POST) #aquí mellega toda la información del html
+def autores(request):
+    return render(request,"app_entrega1/autores.html")
 
-            print(miFormulario)
+def formulario_autores(request):
+    
+    if request.method == 'POST':
 
-            if miFormulario.is_valid:   #Si pasó la validación de Django
+        autor = Autores(request.POST['nombre'],request.POST['apellido'])
+        autor.save()
+        
+        return render(request,"app_entrega1/autoresFormulario.html") 
 
-                  informacion = miFormulario.cleaned_data
-
-                  autor = Autores (nombre=informacion['nombre'], camada=informacion['apellido']) 
-
-                  autor.save()
-
-                  return render(request, "app_entrega1/inicio.html") #Vuelvo al inicio o a donde quieran
-
-      else: 
-
-            miFormulario= AutorFormulario() #Formulario vacio para construir el html
-
-      return render(request, "app_entrega1/autores.html", {"miFormulario":miFormulario})
+    return render(request,"app_entrega1/autoresFormulario.html")    
