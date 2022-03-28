@@ -6,12 +6,17 @@
     <title>Formulario Autores</title>
 </head>
 <body>
-    <form action="/app_entrega1/autoresFormulario/" method="POST">
+{% if miFormulario.errors %}
 
-        {% csrf_token %}
-        
-        <p>nombre: <input type="text", name="nombre"></p>
-        <p>apellido: <input type="text", name="apellido"></p>
+    <p style="color:blueviolet;"></p> Los datos son erróneos</p>
+
+{% endif %}
+
+    <form action="" method="POST">{% csrf_token %}
+
+        <table>
+            {{miFormulario.as_table}}
+        </table>
 
         <input type="submit" value="Agregar Autor">
 
