@@ -87,3 +87,55 @@ def formulario_libros(request):
         miFormulario = LibrosFormulario()
 
     return render(request,"app_entrega1/librosFormulario.html",{"miFormulario":miFormulario})    
+
+
+#busqueda 
+def buscar_libros2(request):
+    return render(request, 'app_entrega1/buscarlibros.html')
+
+def buscar(request):
+    lib_bus=request.GET.get('libro')
+    if lib_bus:
+        libros= Libros.objects.filter(titulo__icontains= lib_bus)
+        print("lib_bus: ", lib_bus)
+        print("Libros: ", libros)
+        print("type: ", type(libros))
+        return render(request, 'app_entrega1/buscarlibros.html', {"libros": libros, "nombre": lib_bus})
+    else: 
+        respuesta="No enviaste datos"
+    return render(request, 'app_entrega1/buscarlibros.html', {"respuesta": respuesta})          
+
+def buscar_libros3(request):
+
+    data = request.GET.get('libro', "")
+    error = ""
+
+    if data:
+        try:
+            libro = Libros.objects.get(titulo=data)
+            return render(request, 'app_entrega1/buscarlibros.html', {"libros": libro, "nombre": data})
+
+        except Exception as exc:
+            print(exc)
+            error = "No existe Libro"
+    return render(request, 'app_entrega1/buscarlibros.html', {"error": error})          
+
+def buscar_libros(request):
+
+    data = request.GET.get('libro', "")
+    error = ""
+
+    if data:
+       # try:
+            libros = Libros.objects.filter(titulo__icontains= data)
+            print(libros)
+            if libros:
+                return render(request, 'app_entrega1/buscarlibros.html', {"libros": libros, "nombre": data})
+            else: 
+                error = "No existe Libro"
+    else: 
+            error = "No ingreso ningun Libro"        
+    return render(request, 'app_entrega1/buscarlibros.html', {"error": error}) 
+
+
+
