@@ -24,19 +24,21 @@ Proyecto Web Django con patrón MVT que incluya:
 
 - Hijo:  posts.html 
 
-3. Por lo menos 3 clases en models (Libros, Autores, Editoriales)
+2. Por lo menos 3 clases en models (Libros, Autores, Editoriales)
 
-5. Un formulario para insertar datos a todas las clases de tu models 
+3. Un formulario para insertar datos a todas las clases de tu models 
+
 -<http://127.0.0.1:8000/app_entrega1/autoresFormulario/>
 
 -<http://127.0.0.1:8000/app_entrega1/librosFormulario/>
 
 -<http://127.0.0.1:8000/app_entrega1/editorialFormulario/>
 
-5. Un formulario para buscar algo en la BD
+4. Un formulario para buscar algo en la BD
+
 -<http://127.0.0.1:8000/app_entrega1/librosBuscar/>
 
-7. Readme que indique el orden en el que se prueban las cosas y/oo donde están las
+5. Readme que indique el orden en el que se prueban las cosas y/oo donde están las
 funcionalidades
 
 
